@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  portal:
+    build: .
+    image: socialpowerv1-portal:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - AUTH_SECRET=${AUTH_SECRET}
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
+      - PGSSLMODE=${PGSSLMODE}
+    restart: unless-stopped
